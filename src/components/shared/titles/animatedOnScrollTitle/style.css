@@ -1,0 +1,27 @@
+/* lineup class and keyframes */
+.lineUp {
+  animation: 2s anim-lineUp ease-out infinite;
+}
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60%);
+  }
+  20% {
+    opacity: 0.5;
+    transform: translateY(80%);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.lineDown {
+  animation: 2s anim-lineUp ;
+  animation-direction: reverse;
+}

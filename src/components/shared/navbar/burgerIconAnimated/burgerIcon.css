@@ -1,0 +1,44 @@
+.menu {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 8px;
+}
+
+.menu span {
+  background: #fff;
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menu .line-1 {
+  width: 50%;
+  transform: translate(-100%, -10px);
+  transform-origin: 0 0;
+}
+
+.menu .line-3 {
+  width: 50%;
+  left: auto;
+  right: 0;
+  transform: translate(0, 8px);
+  transform-origin: 100 0;
+}
+
+.openmenu .line-1 {
+  transform: translate(0, 0) rotate(-45deg);
+}
+
+.openmenu .line-3 {
+  transform: translate(-100%, 0) rotate(-45deg);
+}
+
+.openmenu .line-2 {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
