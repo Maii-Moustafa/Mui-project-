@@ -11,9 +11,6 @@ const ThemeProvider = ({ children }) => {
   const toggleMode = useCallback(() => {
     setMode((prevMode) => (prevMode === "dark" ? "light" : "dark"));
   }, []);
-  // const toggleMode = useCallback(() => {
-  //   setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-  // }, []);
 
   const theme = useMemo(() => getTheme(mode), [mode]);
 

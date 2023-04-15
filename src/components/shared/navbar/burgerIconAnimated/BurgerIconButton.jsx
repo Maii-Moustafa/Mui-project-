@@ -9,7 +9,7 @@ import burgerIcon from "./burgerIcon.css";
 
 const BurgerIconButton = (props) => {
   // console.log(props);
-  
+
   return (
     <>
       <IconButton
@@ -18,7 +18,6 @@ const BurgerIconButton = (props) => {
         aria-controls="menu-appbar"
         aria-haspopup="true"
         color="inherit"
-        className={props.toggled ? "menu openmenu" : "menu"}
         onClick={props.toggleDrawer(top, true)}
       >
         <Box>

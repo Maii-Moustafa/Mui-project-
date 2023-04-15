@@ -9,12 +9,21 @@ const getTheme = (mode) =>
       mode,
       ...(mode === "light"
         ? {
+            styleOverrides: {
+              body: {
+                backgroundColor: "#F9F9F9",
+              },
+            },
+
             secondary: {
               main: "#9E9E9E",
             },
             // palette values for light mode
             // primary: amber,
             divider: "black",
+            background: {
+              default: "#e6e6e6",
+            },
             // text: {
             //   primary: grey[900],
             //   secondary: grey[800],
@@ -31,10 +40,11 @@ const getTheme = (mode) =>
             "&:hover": {
               backgroundColor: "",
             },
-            // background: {
-            //   default: deepOrange[900],
-            //   paper: deepOrange[900],
-            // },
+            background: {
+              default: "black",
+              // paper: deepOrange[900],
+           
+            },
             text: {
               // primary: "#fff",
               secondary: "#9E9E9E",
@@ -59,6 +69,13 @@ const getTheme = (mode) =>
       },
     },
     components: {
+      MuiButtonBase: {
+        defaultProps: {
+          // The props to change the default for.
+          disableRipple: true, // No more ripple, on the whole application 💣!
+          backgroundColor: "black",
+        },
+      },
       MuiCssBaseline: {
         styleOverrides: {
           body: {
@@ -68,13 +85,14 @@ const getTheme = (mode) =>
 
             // ...darkScrollbar(),
             // color: "black",
-            // backgroundColor: "white",
+
             // "& h1": {
             //   color: "black",
             // },
           },
         },
       },
+
       MuiContainer: {
         styleOverrides: {
           maxWidthSm: {
@@ -92,14 +110,14 @@ const getTheme = (mode) =>
         },
       },
     },
-    MuiButton: {
-      styleOverrides: {
-        root: ({ ownerState }) =>
-          ownerState.disableRipple && {
-            backgroundColor: "wheat",
-          },
-      },
-    },
+    // MuiButton: {
+    //   styleOverrides: {
+    //     root: ({ ownerState }) =>
+    //       ownerState.disableRipple && {
+    //         backgroundColor: "wheat",
+    //       },
+    //   },
+    // },
 
     overrides: {
       MuiCssBaseline: {

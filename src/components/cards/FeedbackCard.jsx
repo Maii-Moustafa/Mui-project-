@@ -5,7 +5,9 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 
+import { useTheme } from "@mui/material/styles";
 const FeedbackCard = ({ id, avatar, avatarInfo, content }) => {
+  
   return (
     <>
       <Card
@@ -26,6 +28,7 @@ const FeedbackCard = ({ id, avatar, avatarInfo, content }) => {
             flexDirection: "column",
             justifyContent: "flex-start",
             padding: "10px",
+            backgroundColor: "#090909",
           }}
         >
           <Typography
@@ -33,7 +36,10 @@ const FeedbackCard = ({ id, avatar, avatarInfo, content }) => {
             color="secondary"
             sx={
               {
-                // paddingInner: "0 35px"
+                fontWeight:"bold",
+                fontStyle:"italic",
+                fontSize:"1.5rem",
+                
               }
             }
           >{`"${content}"`}</Typography>
@@ -58,6 +64,7 @@ const FeedbackCard = ({ id, avatar, avatarInfo, content }) => {
               variant="span"
               sx={{
                 padding: "10px",
+                letterSpacing:"2px"
               }}
             >
               {avatarInfo}

@@ -1,22 +1,51 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import servicecard from'./servicecard.css'
+
+import { Box } from "@mui/material";
+import { useTheme } from "@emotion/react";
+
 const ServicesCard = ({ id, icon, title, description }) => {
+  //--------------- state ---------------
+  const theme = useTheme();
+
   return (
     <>
-      <Card
+      <Box
         // sx={{ minWidth: 275 }}
-        className="cornerCard"
         sx={{
           color: "white",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          borderRadius: "0px",
-          backgroundColor: "black",
           padding: "20px",
-          "&:nth-of-type(2n)": { backgroundColor: "#ffffff" },
+          position: "relative",
+          border: "1px solid ",
+          borderColor: theme.palette.mode === "dark" ? "#9E9E9E" : "black",
+          height: "40vh",
+          marginTop: { sm: "0.5rem", md: "0.5rem" },
+          
+          "&::nth-child(even)": { backgroundColor: "white" },
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            height: "80%",
+            width: "90%",
+            top: "-1px",
+            left: "15%",
+            backgroundColor:
+              theme.palette.mode === "dark" ? "black" : "#F9F9F9",
+          },
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            height: "80%",
+            width: "85%",
+            top: "25%",
+            left: "-1px",
+            backgroundColor:
+              theme.palette.mode === "dark" ? "black" : "#F9F9F9",
+          },
         }}
       >
         <CardContent
@@ -25,22 +54,35 @@ const ServicesCard = ({ id, icon, title, description }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            zIndex: 2,
           }}
         >
-          <img  src={icon} alt={title} style={{ width: "15%" }} />
+          <img src={icon} alt={title} style={{ width: "15%" }} />
 
-          <Typography variant="h6" style={{ textAlign: "center", paddingTop: "8px" }}>
-            {title} 
+          <Typography
+            variant="h6"
+            sx={{
+              textAlign: "center",
+              paddingTop: "1.5rem",
+              fontWeight: "bold",
+              color: theme.palette.mode === "dark" ? "white" : "black",
+            }}
+          >
+            {title}
           </Typography>
           <Typography
             variant="p"
             color="secondary"
-            style={{ textAlign: "center", paddingTop: "8px" }}
+            sx={{
+              textAlign: "center",
+              paddingTop: "1.8rem",
+              fontWeight: "bold",
+            }}
           >
             {description}
           </Typography>
         </CardContent>
-      </Card>
+      </Box>
     </>
   );
 };

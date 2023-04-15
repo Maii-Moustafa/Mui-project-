@@ -4,6 +4,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useTheme } from "@emotion/react";
 
 export default function LatestNewsCard({
   id,
@@ -12,14 +13,71 @@ export default function LatestNewsCard({
   title,
   description,
 }) {
+  const theme = useTheme();
+
   return (
-    <Box>
-      <Card>
-        <CardMedia component="img" height="194" image={photo} alt={title} />
+    <Box
+      sx={{
+        width: "95%",
+      }}
+    >
+      <CardMedia
+        component="img"
+        //  height="194"
+        image={photo}
+        alt={title}
+      />
+      <Card
+        sx={{
+          width: "85%",
+          backgroundColor: "black",
+          position: "relative",
+          right: "-70px",
+          top:"-50px"
+        }}
+      >
         <CardContent>
-          <Typography>{category}</Typography>
-          <Typography>{title}</Typography>
-          <Typography>{description}</Typography>
+          <Box
+            sx={{
+              // width: "80%",
+              // backgroundColor: "black",
+            }}
+          >
+            <Typography
+              color="secondary"
+              variant="p"
+              sx={{
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                fontSize: "14px",
+
+                lineHeight: "1.2",
+              }}
+            >
+              {category}
+            </Typography>
+            <Typography
+              variant="h5"
+              color={theme.palette.mode === "dark" ? "white" : "black"}
+              sx={{
+                marginTop: "1rem",
+                letterSpacing: "2px",
+              }}
+            >
+              {title}
+            </Typography>
+
+            <Typography
+              variant="p"
+              color="secondary"
+              sx={{
+                paddingTop: "2rem",
+                fontSize: "0.9rem",
+              }}
+            >
+              {description}
+            </Typography>
+          </Box>
         </CardContent>
       </Card>
     </Box>

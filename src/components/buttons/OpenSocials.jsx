@@ -1,36 +1,9 @@
-// import Stack from "@mui/material/Stack";
-// import IconButton from "@mui/material/IconButton";
-
-//
-// import useHover from "../../../hooks/useHover";
-// import Socials from "./Socials";
-
-// export default function ShowSocials() {
-//   const { isHovering, handleMouseOver, handleMouseOut } = useHover();
-//   return (
-//     // <>
-//     //   <IconButton
-//     //     //   color="primary"
-//     //     aria-label="scroll toggle"
-//     //     sx={{
-//     //       color: "black",
-//     //       zIndex: 200,
-//     //     }}
-//     //     onMouseOver={handleMouseOver}
-//     //     onMouseOut={handleMouseOut}
-//     //   >
-//     //     <ShareOutlinedIcon />
-//     //     {isHovering ? <Socials /> : ""}
-//     //   </IconButton>
-//     // </>
-
-//   );
-// }
-
 import * as React from "react";
 import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
+import Divider from "@mui/material/Divider";
 
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
@@ -40,18 +13,50 @@ import LinkedCameraOutlinedIcon from "@mui/icons-material/LinkedCameraOutlined";
 const actions = [
   {
     icon: (
+      <Divider
+        variant="middle"
+        // flexItem
+        sx={{
+          display: "inline-block",
+          width: "60px",
+          color: "white",
+          transition: "all 0.2s ",
+        }}
+      />
+    ),
+    name: "divider",
+  },
+  {
+    icon: (
       <FacebookOutlinedIcon
         aria-label="scroll toggle"
         sx={{
           color: "white",
-          "&:hover": { color: "black" },
         }}
       />
     ),
     name: "facebook",
   },
-  { icon: <TwitterIcon />, name: "twitter" },
-  { icon: <LinkedCameraOutlinedIcon />, name: "insta" },
+  {
+    icon: (
+      <TwitterIcon
+        sx={{
+          color: "white",
+        }}
+      />
+    ),
+    name: "twitter",
+  },
+  {
+    icon: (
+      <LinkedCameraOutlinedIcon
+        sx={{
+          color: "white",
+        }}
+      />
+    ),
+    name: "insta",
+  },
 ];
 
 export default function OpenSocials() {
@@ -68,9 +73,12 @@ export default function OpenSocials() {
           position: "absolute",
           right: "-294px",
           top: "260px",
-          color: "black",
+          // color: "black",
           [`& .MuiSpeedDial-fab `]: {
-            backgroundColor: "black",
+            backgroundColor: "transparent",
+            "&:hover": {
+              backgroundColor: "transparent",
+            },
           },
         }}
         icon={
@@ -78,18 +86,27 @@ export default function OpenSocials() {
             sx={{
               color: "white",
               zIndex: 200,
-              backgroundColor: "none",
             }}
           />
         }
       >
+        {/* <Stack direction="row" alignItems="center">
+         */}
+
         {actions.map((action) => (
           <SpeedDialAction
             key={action.name}
             icon={action.icon}
             tooltipTitle={action.name}
+            sx={{
+              backgroundColor: "transparent",
+              "&:hover": {
+                backgroundColor: "transparent",
+              },
+            }}
           />
         ))}
+        {/* </Stack> */}
       </SpeedDial>
     </Box>
   );

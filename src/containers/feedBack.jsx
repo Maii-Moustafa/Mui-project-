@@ -1,10 +1,13 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-
+import Typography from "@mui/material/Typography";
 import Carousel from "react-material-ui-carousel";
 
+import { useTheme } from "@mui/material/styles";
+
+import { Parallax } from "react-scroll-parallax";
+
 import FeedbackCard from "../components/cards/FeedbackCard";
-import AnimatedOnScrollTitle from "../components/shared/titles/animatedOnScrollTitle/AnimatedOnScrollTitle";
 
 const feedbacks = [
   {
@@ -41,23 +44,42 @@ const feedbacks = [
 ];
 
 const FeedBack = () => {
+  const theme = useTheme();
   return (
     <>
       <Box
         sx={{
           width: "100%",
-          backgroundColor: "black",
-          position: "relative",
+          backgroundColor: "#090909",
+
           marginTop: "8rem",
         }}
         component="section"
       >
-        <AnimatedOnScrollTitle title="Feedback from our clients." />
+        <Parallax speed={-3} style={{
+        width: "30%",
+         position: "relative" }}>
+          <Typography
+            variant="h2"
+            color={theme.palette.mode === "dark" ? "grey" : "black"}
+            sx={{
+              position: "absolute",
+              marginTop: "1rem",
+              letterSpacing: "2px",
+              fontWeight: "700",
+              left: "50px",
+              top: "-30px",
+              zIndex:50
+            }}
+          >
+            Feedback from our clients.
+          </Typography>
+        </Parallax>
 
         <Stack direction="row" justifyContent="flex-end">
           <Carousel
             sx={{
-              width: "50%",
+              width: { sm: "100%", md: "60%", lg: "60%" },
               backgroundColor: "#090909",
               padding: "60px 0 60px 20px;",
             }}

@@ -1,3 +1,5 @@
+import { useRef, useEffect, useState } from "react";
+
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
@@ -16,8 +18,38 @@ import ScrollToggler from "../components/buttons/ScrollToggle";
 import Footer from "../components/shared/Footer";
 import Loading from "../containers/loading";
 import Hiring from "../containers/hiring";
+import MuiCarouselNew from "../components/slider/Carousele";
+import CarouselIndicators from "../components/slider/sliderIndicator";
+import LandingCarousel from "../containers/landing 2";
 
 function Home() {
+  const myRef = useRef();
+  const [isVisible, setIsVisible] = useState();
+  console.log({ isVisible });
+  useEffect(() => {
+    // const observer = new IntersectionObserver(callback, options);
+    //callback function fire anytime the visibility changes
+    //entries -> list of all items that match the observer items
+    //threshold percentafe visibilty on the screen
+    //rootMargin container dimensions
+    //root scrollable container default:body
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsVisible(entry.isIntersecting);
+        console.log("entry", entry);
+        if (entry.isIntersecting) observer.unobserve(entry.target);
+        //entry.intersectionRatio percentege  of the element visibility
+      },
+      {
+        threshold: 1,
+      }
+    );
+    //, options
+    //myRef.current  -> element i am crefrencing
+    observer.observe(myRef.current);
+  }, []);
+
   return (
     <>
       {/* <Loading /> */}
@@ -34,19 +66,21 @@ function Home() {
         <ThemeToggler />
         <ScrollToggler />
       </Stack>
-      {/* <Landing /> */}
-      {/* <HowSection /> */}
+
+      <LandingCarousel />
+
+      <HowSection />
+      <Product />
       <Container
         maxWidth="xl"
         // sx={{ flex: 1, my: 2  }}
         component="main"
         disableGutters
       >
-        {/* <HelloSection /> */}
+        <HelloSection myRef={myRef} isVisible={isVisible} />
         <OurServices />
-
         <OurWork />
-        <Product />
+
         <FeedBack />
         <LatestNews />
         <OurClients />

@@ -1,8 +1,9 @@
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 
-const MainTitle = ({ mainTitle }) => {
+const MainTitle = ({ mainTitle ,props }) => {
   const theme = useTheme();
+  console.log(props);
   return (
     <Typography
       variant="h2"
@@ -12,6 +13,7 @@ const MainTitle = ({ mainTitle }) => {
         letterSpacing: "2px",
         fontWeight: "700",
       }}
+      {...props}
     >
       {mainTitle}
     </Typography>

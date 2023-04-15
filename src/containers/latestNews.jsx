@@ -97,9 +97,10 @@ const LatestNews = () => {
     <Box sx={{ width: "100%", marginTop: "8rem" }} component="section">
       <SubTitle subTitle="LATEST NEWS" />
       <MainTitle mainTitle="Latest & Greatest Post" />
+      
       <Slider {...settings}>
         {lastNews.map((card) => {
-          return <LatestNewsCard key={card.id} {...card} />;
+          return <LatestNewsCard  key={card.id} {...card} />;
         })}
       </Slider>
       {/* <Grid

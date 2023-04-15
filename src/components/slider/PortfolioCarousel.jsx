@@ -1,128 +1,160 @@
 import React from "react";
-import { useEffect } from "react";
+// import { Keyframe } from 'react-native-reanimated';
+
+import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 
 import Stack from "@mui/material/Stack";
 import Carousel from "react-material-ui-carousel";
+
 import PortfolioItem from "./PortfolioItem";
 
 import slider from "./slider.json";
+import style from "./style.css";
 
-import ShowSocials from "../buttons/OpenSocials";
+import cn from "classnames";
+
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { Box } from "@mui/material";
 
 function PortfolioCarousel() {
-  // useEffect(() => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  //   const divs = document.querySelectorAll(".testemonial");
-  //   gsap.set(divs[1], { x: 100, opacity: 1 });
+  // Used to determine which items appear above the active item
+  const halfwayIndex = Math.ceil(slider.length / 2);
 
-  //   gsap
-  //     .timeline({ repeat: -1, defaults: { duration: 3 } })
-  //     .add("one")
-  //     .to(divs[0], { y: 150, x: 0, opacity: 0.05 }, "one")
-  //     .to(divs[1], { y: -75, x: 0, opacity: 0.05 }, "one")
-  //     .to(divs[2], { y: -85, x: 100, opacity: 1 }, "one")
+  // Usd to determine the height/spacing of each item
+  const itemHeight = 120;
 
-  //     .add("two")
-  //     .to(divs[0], { y: 75, x: 100, opacity: 1 }, "two")
-  //     .to(divs[1], { y: 75, x: 0, opacity: 0.05 }, "two")
-  //     .to(divs[2], { y: -150, x: 0, opacity: 0.05 }, "two")
+  // Used to determine at what point an item is moved from the top to the bottom
+  const shuffleThreshold = halfwayIndex * itemHeight;
 
-  //     .add("three")
-  //     .to(divs[0], { y: 0, x: 0, opacity: 0.05 }, "three")
-  //     .to(divs[1], { y: 0, x: 0, opacity: 1 }, "three")
-  //     .to(divs[2], { y: 0, x: 0, opacity: 0.05 }, "three");
-  // });
+  // Used to determine which items should be visible. this prevents the "ghosting" animation
+  const visibleStyleThreshold = shuffleThreshold / 2;
 
-  // const div = document.querySelectorAll('.testemonial');
-  // const divArr = Array.prototype.slice.call(div);
-  // gsap.utils.toArray("divArr").forEach((el, i) => {
-  //   const tl = gsap.timeline({ paused: true, reversed: true });
-  //   tl.to(el, {
-  //     width: "400px",
-  //     duration: 1,
-  //   });
+  const determinePlacement = (itemIndex) => {
+    // If these match, the item is active
+    if (activeIndex === itemIndex) return 0;
 
-  //   el.addEventListener("click", function () {
-  //     if (tl.reversed()) {
-  //       tl.play();
-  //     } else {
-  //       tl.reverse();
-  //     }
-  //   });
-  // });
+    if (itemIndex >= halfwayIndex) {
+      if (activeIndex > itemIndex - halfwayIndex) {
+        return (itemIndex - activeIndex) * itemHeight;
+      } else {
+        return -(slider.length + activeIndex - itemIndex) * itemHeight;
+      }
+    }
 
-  // const divs = document.querySelectorAll(".testemonial");
-  // gsap.set(divs[1], { x: 100, opacity: 1 });
+    if (itemIndex > activeIndex) {
+      return (itemIndex - activeIndex) * itemHeight;
+    }
 
-  // gsap
-  //   .timeline({ repeat: -1, defaults: { duration: 3 } })
-  //   .add("one")
-  //   .to(divs[0], { y: 150, x: 0, opacity: 0.05 }, "one")
-  //   .to(divs[1], { y: -75, x: 0, opacity: 0.05 }, "one")
-  //   .to(divs[2], { y: -85, x: 100, opacity: 1 }, "one")
-
-  //   .add("two")
-  //   .to(divs[0], { y: 75, x: 100, opacity: 1 }, "two")
-  //   .to(divs[1], { y: 75, x: 0, opacity: 0.05 }, "two")
-  //   .to(divs[2], { y: -150, x: 0, opacity: 0.05 }, "two")
-
-  //   .add("three")
-  //   .to(divs[0], { y: 0, x: 0, opacity: 0.05 }, "three")
-  //   .to(divs[1], { y: 0, x: 0, opacity: 1 }, "three")
-  //   .to(divs[2], { y: 0, x: 0, opacity: 0.05 }, "three");
+    if (itemIndex < activeIndex) {
+      if ((activeIndex - itemIndex) * itemHeight >= shuffleThreshold) {
+        return (slider.length - (activeIndex - itemIndex)) * itemHeight;
+      }
+      return -(activeIndex - itemIndex) * itemHeight;
+    }
+  };
 
   return (
     <>
       <Carousel
-        swipe="true"
-        //   next={(next, active) =>
-        //     console.log(`we left ${active}, and are now at ${next}`)
-        //   }
-        //   prev={(prev, active) =>
-        //     console.log(`we left ${active}, and are now at ${prev}`)
-        //   }
-        //   NextIcon=
-        //   PrevIcon=
+        sx={{
+          "& div:nth-of-type(2)": {
+            right: "10px",
+          },
+          "& div:nth-of-type(3)": {
+            left: "1440px",
+          },
+        }}
+        swipe={true}
+        //animation the letters
+        // next={(next, active) =>
+        //    console.log(`we left ${active}, and are now at ${next}`);
 
+        // }
+        // prev={(prev, active) =>
+        //   console.log(`we left ${active}, and are now at ${prev}`)
+        // }
+        //------------------------------------ navButtons ------------------------------------
+        fullHeightHover={false}
+        NextIcon={
+          <ArrowForwardIosIcon
+            sx={{
+              position: "relative",
+              right: "150px",
+              // top:"-40px",
+              width: "2.5rem",
+              height: "2.5rem",
+            }}
+          />
+        }
+        PrevIcon={
+          <ArrowBackIosNewIcon
+            sx={{
+              position: "relative",
+              // left: "1440px",
+              // top:"-40px",
+              width: "2.5rem",
+              height: "2.5rem",
+            }}
+          />
+        }
+        navButtonsAlwaysVisible={true}
         navButtonsProps={{
           // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
           style: {
-            backgroundColor: "cornflowerblue",
-            borderRadius: 0,
+            color: "white",
+            backgroundColor: "transparent",
           },
         }}
         navButtonsWrapperProps={{
           // Move the buttons to the bottom. Unsetting top here to override default style.
           style: {
             bottom: "0",
-            // top: "unset",
-            // zIndex: 70,
-            // position: "absolute",
-            // bottom: "-215px",
-            // right: "71px",
-            // backgroundColor: "none",
+            top: "unset",
+            
           },
         }}
+        //------------------------------------ Indicator ------------------------------------
+
         IndicatorIcon={slider.map((item, i) => (
-          <div className="testemonial">
-            <img style={{ width: "150px" }} key={item.id} src={item.photo} />
-          </div>
+          <Box
+            // type="button"
+            onClick={() => setActiveIndex(i)}
+            className={cn("carousel-item", {
+              active: activeIndex === i,
+              visible: Math.abs(determinePlacement(i)) <= visibleStyleThreshold,
+            })}
+            key={item.id}
+            style={{
+              width: "100px",
+              minHeight: "80px",
+              maxHeight: "auto",
+              transform: `translateY(${determinePlacement(i)}px)`,
+            }}
+          >
+            <img
+              style={{ maxWidth: "80px", height: "auto" }}
+              key={item.id}
+              src={item.photo}
+            />
+          </Box>
         ))}
         indicatorIconButtonProps={{
           style: {
-            width: "60px",
-            height: "20px",
-            marginTop: "80px",
+            width: "100px",
+            // height: "20px",
+            // marginTop: "80px",
           },
         }}
         activeIndicatorIconButtonProps={{
           style: {
             zIndex: 50,
-            transition: "200px 2s",
-            "img:hover": {
-              width: "200px",
-            },
+            // width: "300px",
+            backgroundColor: "transparent",
+            transition: "200px 2s ease-out",
           },
         }}
         indicatorContainerProps={{
@@ -130,15 +162,17 @@ function PortfolioCarousel() {
             display: "flex",
             flexDirection: "column",
             position: "absolute",
-
+            height: "300px",
+            overflow: "hidden",
             zIndex: 500,
-            top: "100px",
+            top: "250px",
             // right: "300px",
           },
         }}
+
       >
         {slider.map((item, i) => (
-          <PortfolioItem key={item.id} item={item} />
+          <PortfolioItem key={item.id} item={item} i={i + 1} />
         ))}
       </Carousel>
     </>

@@ -36,10 +36,13 @@ const OurServices = () => {
       <MainTitle mainTitle="New Branding Agency" />
       <Grid container sx={{
         marginTop: "2rem",
+        // "&::nth-of-type(even)": { backgroundColor: "white" },
       }}>
         {services.map((card) => {
           return (
-            <Grid key={card.id} item xs={12} md={4} >
+            <Grid key={card.id} item xs={12} md={4} sx={{
+              //  "&::nth-of-type(even)": { backgroundColor: "white" },
+            }}>
               <ServicesCard key={card.id} {...card} />
             </Grid>
           );
