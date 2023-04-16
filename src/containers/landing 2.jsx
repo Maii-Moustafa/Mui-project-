@@ -4,7 +4,7 @@ import Stack from "@mui/material/Stack";
 
 import OpenSocials from "../components/buttons/OpenSocials";
 
-import HomeCarousel from "../components/slider/Carousele";
+import HomeCarousel from "../components/slider/HomeCarousele";
 import HomeCarouselIndicators from "../components/slider/sliderIndicator";
 
 export default function LandingCarousel() {

@@ -1,11 +1,14 @@
 import Stack from "@mui/material/Stack";
-import PortfolioCarousel from "../components/slider/PortfolioCarousel";
+import PortfolioCarousel from "../components/old slider/PortfolioCarousel";
 import OpenSocials from "../components/buttons/OpenSocials";
 
 export default function Landing() {
   return (
     <>
-      <Stack justifyContent="flex-end" sx={{ position: "relative",height:"100vh", }}>
+      <Stack
+        justifyContent="flex-end"
+        sx={{ position: "relative", height: "100vh" }}
+      >
         {/* <Stack direction="row" justifyContent="flex-end">
           <Stack
             

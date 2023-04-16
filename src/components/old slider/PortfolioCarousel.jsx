@@ -7,9 +7,9 @@ import gsap from "gsap";
 import Stack from "@mui/material/Stack";
 import Carousel from "react-material-ui-carousel";
 
-import PortfolioItem from "./PortfolioItem";
+import PortfolioItem from "../slider/PortfolioItem";
 
-import slider from "./slider.json";
+import slider from "../slider/slider.json";
 import style from "./style.css";
 
 import cn from "classnames";
@@ -114,7 +114,6 @@ function PortfolioCarousel() {
           style: {
             bottom: "0",
             top: "unset",
-            
           },
         }}
         //------------------------------------ Indicator ------------------------------------
@@ -169,7 +168,6 @@ function PortfolioCarousel() {
             // right: "300px",
           },
         }}
-
       >
         {slider.map((item, i) => (
           <PortfolioItem key={item.id} item={item} i={i + 1} />

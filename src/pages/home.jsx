@@ -18,7 +18,7 @@ import ScrollToggler from "../components/buttons/ScrollToggle";
 import Footer from "../components/shared/Footer";
 import Loading from "../containers/loading";
 import Hiring from "../containers/hiring";
-import MuiCarouselNew from "../components/slider/Carousele";
+import MuiCarouselNew from "../components/slider/HomeCarousele";
 import CarouselIndicators from "../components/slider/sliderIndicator";
 import LandingCarousel from "../containers/landing 2";
 
