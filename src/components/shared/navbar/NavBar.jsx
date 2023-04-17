@@ -25,6 +25,10 @@ import useScrollDirection from "../../../hooks/useScrollDirection";
 import useHover from "../../../hooks/useHover";
 
 import style from "./style.css";
+import { Image } from "@mui/icons-material";
+import NavLink from "./NavLink";
+import NavTitle from "./NavTitle";
+import NavText from "./NavText";
 
 const navLinks = [
   {
@@ -115,9 +119,13 @@ export default function Navbar() {
           sx={{ backgroundColor: "black" }}
         >
           <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Droow
-            </Typography>
+            </Typography> */}
+            <Image
+              src="../../../src/assets/logo.png"
+              style={{ width: "30%", flexGrow: 1 }}
+            />
             <Box onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
               <BurgerIconButton toggleDrawer={toggleDrawer} toggled={toggled} />
               {state[top] ? (
@@ -226,19 +234,48 @@ export default function Navbar() {
             orientation="vertical"
             variant="middle"
             flexItem
-            sx={{ borderColor: "white" }}
+            sx={{ borderColor: "white", height: "100%", width: "1px" }}
           >
             {/* VERTICAL */}
           </Divider>
           <Grid item xs={4}>
             <List>
-              {contact.map(({ title }) => (
-                <ListItem key={title} sx={{ px: 0 }}>
-                  <ListItemButton onClick={toggleDrawer(top, false)}>
-                    <ListItemText>{title}</ListItemText>
-                  </ListItemButton>
+              <Box sx={{ marginTop: "2rem" }}>
+                <ListItem>
+                  <NavTitle navTitle="Studio" />
                 </ListItem>
-              ))}
+                <ListItem>
+                  <NavText navText="26-30 New Damietta" color="grey" />
+                </ListItem>
+                <ListItem>
+                  <NavText
+                    navText="El-Mahalla El-Kubra, SK1 66LM"
+                    color="grey"
+                  />
+                </ListItem>
+              </Box>
+              <Box sx={{ marginTop: "2rem" }}>
+                <ListItem>
+                  <NavTitle navTitle="Contact" />
+                </ListItem>
+                <ListItem>
+                  <NavText navText="+00 (2)012 3321" color="white" />
+                </ListItem>
+                <ListItem>
+                  <NavText navText="info@dsngrid.com" color="white" />
+                </ListItem>
+              </Box>
+              <Box sx={{ marginTop: "2rem" }}>
+                <ListItem>
+                  <NavTitle navTitle="Follow us" />
+                </ListItem>
+                <ListItem>
+                  <NavLink navLink="dribble" />
+                  <NavLink navLink="behance" />
+                  <NavLink navLink="linkedin" />
+                  <NavLink navLink="twitter" />
+                </ListItem>
+              </Box>
             </List>
           </Grid>
         </Grid>

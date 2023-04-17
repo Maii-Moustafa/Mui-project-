@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 
 const MainTitle = ({ mainTitle ,props }) => {
   const theme = useTheme();
-  console.log(props);
+
   return (
     <Typography
       variant="h2"

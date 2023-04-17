@@ -6,8 +6,28 @@ import Carousel from "react-material-ui-carousel";
 import { useTheme } from "@mui/material/styles";
 
 import { Parallax } from "react-scroll-parallax";
+import SwipeableViews from "react-swipeable-views-react-18-fix";
 
 import FeedbackCard from "../components/cards/FeedbackCard";
+
+const styles = {
+  // root: {
+  //   padding: "0 30px",
+  // },
+  // slideContainer: {
+  //   width: "80%",
+  // },
+  slide: {
+    // padding: 15,
+    // width:"80%",
+    minHeight: 100,
+    color: "#fff",
+  },
+  slide1: {
+    // background: "black",
+    // overflow:"visible"
+  },
+};
 
 const feedbacks = [
   {
@@ -56,9 +76,13 @@ const FeedBack = () => {
         }}
         component="section"
       >
-        <Parallax speed={-3} style={{
-        width: "30%",
-         position: "relative" }}>
+        <Parallax
+          speed={-3}
+          style={{
+            width: "30%",
+            position: "relative",
+          }}
+        >
           <Typography
             variant="h2"
             color={theme.palette.mode === "dark" ? "grey" : "black"}
@@ -69,7 +93,7 @@ const FeedBack = () => {
               fontWeight: "700",
               left: "50px",
               top: "-30px",
-              zIndex:50
+              zIndex: 50,
             }}
           >
             Feedback from our clients.
@@ -77,7 +101,30 @@ const FeedBack = () => {
         </Parallax>
 
         <Stack direction="row" justifyContent="flex-end">
-          <Carousel
+          <Box
+            sx={{
+              width: { sm: "100%", md: "60%", lg: "60%" },
+              backgroundColor: "#090909",
+              padding: "60px 0 60px 20px;",
+            }}
+          >
+            <SwipeableViews
+              // index={activeStep}
+              enableMouseEvents
+              // style={styles.root}
+              // slideStyle={styles.slideContainer}
+            >
+              {feedbacks.map((card, i) => (
+                <div
+                  key={card.id}
+                  style={Object.assign({}, styles.slide, styles.slide1)}
+                >
+                  <FeedbackCard key={card.id} {...card} />
+                </div>
+              ))}
+            </SwipeableViews>
+          </Box>
+          {/* <Carousel
             sx={{
               width: { sm: "100%", md: "60%", lg: "60%" },
               backgroundColor: "#090909",
@@ -128,7 +175,7 @@ const FeedBack = () => {
             {feedbacks.map((card, i) => (
               <FeedbackCard key={card.id} {...card} />
             ))}
-          </Carousel>
+          </Carousel> */}
         </Stack>
       </Box>
     </>

@@ -7,9 +7,10 @@ import Container from "@mui/material/Container";
 
 import ThemeProvider from "../../providers/ThemeContext";
 import Navbar from "./navbar/NavBar";
-import Footer from "./Footer";
+
 import Home from "../../pages/home";
 import CursorBlendMode from "../cursor/CursorBlendMode";
+import Footer from "./footer/Footer";
 
 
 const Layout = ({ children }) => {
@@ -41,6 +42,7 @@ const Layout = ({ children }) => {
         <Home />
 
         <Footer />
+        
       </Stack>
     </ThemeProvider>
   );

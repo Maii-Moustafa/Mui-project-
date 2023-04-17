@@ -17,6 +17,7 @@ const HelloSection = ({ myRef, isVisible }) => {
   //--------------- state ---------------
   const theme = useTheme();
   const parallaxController = useParallaxController();
+  
   return (
     <Box
       sx={{

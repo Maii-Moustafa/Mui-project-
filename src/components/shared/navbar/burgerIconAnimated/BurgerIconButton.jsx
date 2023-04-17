@@ -18,6 +18,7 @@ const BurgerIconButton = (props) => {
         aria-controls="menu-appbar"
         aria-haspopup="true"
         color="inherit"
+        className={props.toggled  ? "openmenu menu": "menu"}
         onClick={props.toggleDrawer(top, true)}
       >
         <Box>

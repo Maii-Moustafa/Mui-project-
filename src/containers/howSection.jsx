@@ -1,39 +1,75 @@
+import { useRef, useEffect, useState } from "react";
+
 import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+
+import Typography from "@mui/material/Typography";
+// import MyButton from "./MyButton";
 
 import ParallaxImage from "../components/shared/parallaxImage";
+import MyButton from "../components/shared/MyButton";
+
+const howPhoto = "https://i.ibb.co/rb5ZNmh/how.jpg";
 
 const HowSection = () => {
-  const howPhoto = "https://i.ibb.co/rb5ZNmh/how.jpg";
+
+  const howSectionRef = useRef();
+  const [isVisible, setIsVisible] = useState();
+ 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+    
+        setIsVisible(entry.isIntersecting);
+    
+        if (entry.isIntersecting) observer.unobserve(entry.target);
+   
+      },
+      {
+        threshold: 1,
+      }
+    );
+
+    observer.observe(howSectionRef.current);
+
+  }, []);
 
   return (
     <>
       <Box
+        ref={howSectionRef}
         sx={{
           position: "relative",
           marginTop: "8rem",
+          opacity: isVisible ? "1" : "0",
+          transform: isVisible
+            ? "translate3d(0, 0, 0) "
+            : "translate3d(-60px, 0, 0)",
+          transition: "0.25s all ease-in-out ",
         }}
         component="section"
       >
-        <ParallaxImage image={howPhoto} children={<Box></Box>} />
-        {/* <Box
+        <ParallaxImage image={howPhoto} />
+        <Box
           sx={{
+            display: { xs: "block", sm: "block", md: "block", lg: "none" },
             position: "absolute",
-            //   top: "414px",
-            top: "0",
+            top: "570px",
             bottom: "0",
             left: "auto",
-            right: "60px",
-            width: "35%",
+            width: "90%",
 
-            backgroundColor: "rgb(0,0,0,0.5)",
+            backgroundColor: "rgb(0,0,0)",
             marginRight: "50px",
-            padding: "80px",
+            padding: "60px",
+            height: "40vh",
           }}
         >
           <Stack
             direction="column"
             justifyContent="center"
-            alignItems="flex-start"
+            alignItems="center"
             sx={{
               color: "white",
               marginTop: "1rem",
@@ -50,6 +86,7 @@ const HowSection = () => {
             </Typography>
             <Typography
               variant="p"
+              color="secondary"
               sx={{
                 marginTop: "30px",
                 marginBottom: "30px",
@@ -61,7 +98,7 @@ const HowSection = () => {
             </Typography>
             <MyButton content="Learn more" />
           </Stack>
-        </Box> */}
+        </Box>
       </Box>
     </>
   );

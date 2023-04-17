@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { useTheme } from "@mui/material/styles";
 
-const NavTitle = ({ navTitle }) => {
+const FooterTitle = ({ footerTitle }) => {
   const theme = useTheme();
   return (
     <>
@@ -10,21 +10,25 @@ const NavTitle = ({ navTitle }) => {
         variant="h6"
         color={theme.palette.mode === "dark" ? "white" : "black"}
         sx={{
-          marginTop: "1rem",
-          letterSpacing: "2px",
+          // marginTop: "1rem",
+        fontSize:"1rem",
+          letterSpacing: "4px",
           fontWeight: "700",
           textTransform: "uppercase",
         }}
       >
-        {navTitle}
+        {footerTitle}
       </Typography>
       <Divider
         sx={{
-          width: "30px",
+          borderBottomWidth: '2px',
+          marginBottom:"1rem",
+          marginTop: "4px",
+          width: "15px",
         }}
       />
     </>
   );
 };
 
-export default NavTitle;
+export default FooterTitle;

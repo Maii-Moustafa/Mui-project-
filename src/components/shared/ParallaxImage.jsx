@@ -18,20 +18,22 @@ export default function ParallaxImage({ image, children }) {
     <ParallaxBanner
       layers={[
         {
-          image:"https://i.ibb.co/rb5ZNmh/how.jpg",
+          image: "https://i.ibb.co/rb5ZNmh/how.jpg",
           speed: 20,
           //   easing: [0.2, -0.6, 1, -0.6],
           // easing:"easeInQuad"
           children: (
             <Box
               sx={{
+                display: { xs: "none", sm: "none", md: "none", lg: "block" },
                 position: "absolute",
                 //   top: "414px",
                 top: "100px",
                 bottom: "0",
                 left: "auto",
                 right: "60px",
-                width: "35%",
+                // width: {sm:"0", md: "0", lg: "35%" } ,
+                width: "35%" ,
 
                 backgroundColor: "rgb(0,0,0,0.5)",
                 marginRight: "50px",

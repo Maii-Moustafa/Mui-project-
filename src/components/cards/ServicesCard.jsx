@@ -12,7 +12,6 @@ const ServicesCard = ({ id, icon, title, description }) => {
   return (
     <>
       <Box
-        // sx={{ minWidth: 275 }}
         sx={{
           color: "white",
           display: "flex",
@@ -24,8 +23,6 @@ const ServicesCard = ({ id, icon, title, description }) => {
           borderColor: theme.palette.mode === "dark" ? "#9E9E9E" : "black",
           height: "40vh",
           marginTop: { sm: "0.5rem", md: "0.5rem" },
-          
-          "&::nth-child(even)": { backgroundColor: "white" },
           "&::before": {
             content: '""',
             position: "absolute",

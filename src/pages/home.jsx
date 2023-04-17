@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 
-import Landing from "../containers/landing";
+import LandingCarousel from "../containers/landing 2";
 import FeedBack from "../containers/feedBack";
 import HelloSection from "../containers/helloSection";
 import HowSection from "../containers/howSection";
@@ -15,17 +15,14 @@ import OurWork from "../containers/ourWork";
 import Product from "../containers/product";
 import ThemeToggler from "../components/buttons/ThemeToggler";
 import ScrollToggler from "../components/buttons/ScrollToggle";
-import Footer from "../components/shared/Footer";
 import Loading from "../containers/loading";
 import Hiring from "../containers/hiring";
-import MuiCarouselNew from "../components/slider/HomeCarousele";
-import CarouselIndicators from "../components/slider/sliderIndicator";
-import LandingCarousel from "../containers/landing 2";
 
 function Home() {
   const myRef = useRef();
+  const howSectionRef = useRef();
   const [isVisible, setIsVisible] = useState();
-  console.log({ isVisible });
+  // console.log({ isVisible });
   useEffect(() => {
     // const observer = new IntersectionObserver(callback, options);
     //callback function fire anytime the visibility changes
@@ -36,8 +33,9 @@ function Home() {
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
+    
         setIsVisible(entry.isIntersecting);
-        console.log("entry", entry);
+        // console.log("entry", entry);
         if (entry.isIntersecting) observer.unobserve(entry.target);
         //entry.intersectionRatio percentege  of the element visibility
       },
@@ -47,15 +45,15 @@ function Home() {
     );
     //, options
     //myRef.current  -> element i am crefrencing
+
     observer.observe(myRef.current);
+
   }, []);
 
   return (
     <>
       {/* <Loading /> */}
       <Stack
-        justifyContent="center"
-        alignItems="flex-end"
         sx={{
           position: "fixed",
           top: "50vh",
@@ -68,8 +66,6 @@ function Home() {
       </Stack>
 
       <LandingCarousel />
-
-      <HowSection />
       <Product />
       <Container
         maxWidth="xl"
@@ -78,6 +74,8 @@ function Home() {
         disableGutters
       >
         <HelloSection myRef={myRef} isVisible={isVisible} />
+      <HowSection howSectionRef={howSectionRef} isVisible={isVisible}/>
+
         <OurServices />
         <OurWork />
 

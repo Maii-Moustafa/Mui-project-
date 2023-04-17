@@ -17,10 +17,11 @@ const styles = {
   },
   slide1: {
     background: "black",
+    // overflow:"visible"
   },
 };
 
-const HomeCarousel = ({ activeStep, setActiveStep }) => {
+const HomeCarousel = ({ activeStep, setActiveStep, exit, setExit }) => {
   // const [activeStep, setActiveStep] = useState(0);
   //   const handleStepChange = (step) => {
   //     setActiveStep(step);
@@ -28,21 +29,27 @@ const HomeCarousel = ({ activeStep, setActiveStep }) => {
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setExit(false);
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setExit(true);
   };
   return (
     <Box
       sx={{
         position: "relative",
+        // width: {xs:"100%", sm: "100%", md: "100%", lg: "80%" },
       }}
     >
       <SwipeableViews index={activeStep} enableMouseEvents>
         {slider.map((item, i) => (
-          <div style={Object.assign({}, styles.slide, styles.slide1)}>
-            <PortfolioItem key={item.id} item={item} i={i + 1} />
+          <div
+            key={item.id}
+            style={Object.assign({}, styles.slide, styles.slide1)}
+          >
+            <PortfolioItem key={item.id} item={item} i={i + 1} exit={exit} />
           </div>
         ))}
       </SwipeableViews>

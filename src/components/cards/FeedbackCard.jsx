@@ -6,13 +6,11 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 
 import { useTheme } from "@mui/material/styles";
+import { Box } from "@mui/material";
 const FeedbackCard = ({ id, avatar, avatarInfo, content }) => {
-  
   return (
     <>
       <Card
-        // sx={{ minWidth: 275 }}
-
         sx={{
           color: "white",
           display: "flex",
@@ -20,6 +18,7 @@ const FeedbackCard = ({ id, avatar, avatarInfo, content }) => {
           alignItems: "center",
           borderRadius: "0px",
           backgroundColor: "#090909",
+          
         }}
       >
         <CardContent
@@ -31,45 +30,49 @@ const FeedbackCard = ({ id, avatar, avatarInfo, content }) => {
             backgroundColor: "#090909",
           }}
         >
-          <Typography
-            variant="p"
-            color="secondary"
-            sx={
-              {
-                fontWeight:"bold",
-                fontStyle:"italic",
-                fontSize:"1.5rem",
-                
-              }
-            }
-          >{`"${content}"`}</Typography>
-
-          <Stack
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
+          <Box
             sx={{
-              marginTop: "2rem",
+            
+              width: { sm: "100%", md: "90%", lg: "90%" },
             }}
           >
-            <Avatar
-              sx={{
-                width: "5rem",
-                height: "5rem",
-              }}
-              alt={avatarInfo}
-              src={avatar}
-            />
             <Typography
-              variant="span"
+              variant="p"
+              color="secondary"
               sx={{
-                padding: "10px",
-                letterSpacing:"2px"
+                fontWeight: "bold",
+                fontStyle: "italic",
+                fontSize: "1.5rem",
+              }}
+            >{`"${content}"`}</Typography>
+
+            <Stack
+              direction="row"
+              justifyContent="flex-start"
+              alignItems="center"
+              sx={{
+                marginTop: "2rem",
               }}
             >
-              {avatarInfo}
-            </Typography>
-          </Stack>
+              <Avatar
+                sx={{
+                  width: "5rem",
+                  height: "5rem",
+                }}
+                alt={avatarInfo}
+                src={avatar}
+              />
+              <Typography
+                variant="span"
+                sx={{
+                  padding: "10px",
+                  letterSpacing: "2px",
+                }}
+              >
+                {avatarInfo}
+              </Typography>
+            </Stack>
+          </Box>
         </CardContent>
       </Card>
     </>

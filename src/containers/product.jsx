@@ -1,3 +1,5 @@
+import { useRef, useEffect, useState } from "react";
+
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Stack from "@mui/material/Stack";
@@ -16,6 +18,25 @@ import { Container, Paper } from "@mui/material";
 const helloPhoto = "https://i.ibb.co/JQf9PFr/watch-Product.jpg";
 
 const Product = () => {
+  const [isVisible, setIsVisible] = useState();
+  const productSectionRef = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        setIsVisible(entry.isIntersecting);
+
+        if (entry.isIntersecting) observer.unobserve(entry.target);
+      },
+      {
+        threshold: 1,
+      }
+    );
+
+    observer.observe(productSectionRef.current);
+  }, []);
   return (
     <Box sx={{ width: "100%", marginTop: "8rem" }} component="section">
       <Stack
@@ -34,18 +55,18 @@ const Product = () => {
             width: "70%",
             height: "100vh",
             backgroundColor: "#090909",
-            zIndex:-4
+            zIndex: -4,
           }}
         >
           <Typography
             sx={{
-              position:"relative",
+              position: "relative",
               top: "170px",
               // right:"420px",
               fontSize: "120px",
               letterSpacing: "4px",
               fontWeight: "700",
-              zIndex:-3
+              zIndex: -3,
             }}
           >
             DROOW
@@ -62,7 +83,19 @@ const Product = () => {
             // paddingBottom: "40px",
           }}
         >
-          <Grid xs={12} md={12} lg={5}>
+          <Grid
+            ref={productSectionRef}
+            xs={12}
+            md={12}
+            lg={5}
+            sx={{
+              opacity: isVisible ? "1" : "0",
+              transform: isVisible
+                ? "translate3d(0, 0, 0) "
+                : "translate3d(-60px, 0, 0)",
+              transition: "0.25s all ease-in-out ",
+            }}
+          >
             <ParallaxBanner
               layers={[
                 {
@@ -86,7 +119,7 @@ const Product = () => {
               alignItems="flex-start"
               sx={{
                 height: "80vh",
-                zIndex:5
+                zIndex: 5,
               }}
             >
               <Stack
