@@ -106,7 +106,7 @@ export default function PortfolioItem({ item, i, exit }) {
               <Typography
                 key={index}
                 variant="span"
-                css={exit ? animatedItemExiting : animatedItem}
+                // css={exit ? animatedItemExiting : animatedItem}
                 sx={{
                   display: "inline-block",
                   letterSpacing: "2px",
