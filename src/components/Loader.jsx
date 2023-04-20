@@ -1,34 +1,40 @@
-import { useState, useEffect } from "react";
-
+import { Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
+import Typography from "@mui/material/Typography";
 
-export default function Loader() {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((oldProgress) => {
-        if (oldProgress === 100) {
-          return 0;
-        }
-        const diff = Math.random() * 10;
-        return Math.min(oldProgress + diff, 100);
-      });
-    }, 500);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
+export default function Loader(props) {
   return (
-    <Box sx={{ width: "100%" }}>
-      <LinearProgress
-        variant="determinate"
-        value={progress}
-        //   color="#fafafa"
-      />
-    </Box>
+    <Stack direction="row" justifyContent="center" alignItems="center">
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          zIndex: "-10",
+
+          position: "relative",
+          // height: "100vh",
+        }}
+      >
+        <Box>
+          <Typography
+            variant="span"
+            color="text.secondary"
+            sx={{
+              fontSize: "20rem",
+              opacity: "0.1",
+            }}
+          >{`${Math.round(props.value)}`}</Typography>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          position: "absolute",
+        }}
+      >
+        <LinearProgress color="secondary" variant="determinate" {...props} />
+      </Box>
+    </Stack>
   );
 }

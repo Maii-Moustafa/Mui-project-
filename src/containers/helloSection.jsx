@@ -26,12 +26,12 @@ const HelloSection = ({ myRef, isVisible }) => {
       }}
       component="section"
     >
-      <Parallax speed={-3}>
+      <Parallax speed={-3} >
         <Typography
           variant="h2"
           color={theme.palette.mode === "dark" ? "white" : "black"}
           sx={{
-            zIndex: 50,
+            zIndex: 1000,
             letterSpacing: "2px",
             fontWeight: "700",
             position: { sm: "relative", md: "relative", lg: "absolute" },
@@ -169,7 +169,7 @@ const HelloSection = ({ myRef, isVisible }) => {
           </Parallax>
         </Grid>
         <Grid xs={12} md={12} lg={8}>
-          <Paper
+          <Box
             sx={{
               width: "100%",
               height: "60vh",
@@ -205,7 +205,7 @@ const HelloSection = ({ myRef, isVisible }) => {
                 onLoad={() => parallaxController.update()}
               />
             </Paper>
-          </Paper>
+          </Box>
         </Grid>
       </Grid>
     </Box>

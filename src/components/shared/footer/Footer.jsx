@@ -20,7 +20,8 @@ export default function Footer() {
   const theme = useTheme();
 
   return (
-    <Box sx={{ width: "100%", marginTop: "8rem" }} component="section">
+    <Box sx={{ width: "100%", marginTop: "8rem" ,backgroundColor:
+    theme.palette.mode === "dark" ? "#090909" : "white", }} component="section">
       <Container>
         <Grid
           container

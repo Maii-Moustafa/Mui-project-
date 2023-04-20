@@ -6,6 +6,8 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 
+import { useTheme } from "@emotion/react";
+
 import {
   Parallax,
   ParallaxBanner,
@@ -18,6 +20,7 @@ import { Container, Paper } from "@mui/material";
 const helloPhoto = "https://i.ibb.co/JQf9PFr/watch-Product.jpg";
 
 const Product = () => {
+  const theme = useTheme();
   const [isVisible, setIsVisible] = useState();
   const productSectionRef = useRef();
 
@@ -54,11 +57,12 @@ const Product = () => {
             top: "-120px",
             width: "70%",
             height: "100vh",
-            backgroundColor: "#090909",
+            backgroundColor:
+              theme.palette.mode === "dark" ? "#090909" : "white",
             zIndex: -4,
           }}
         >
-          <Typography
+          {/* <Typography
             sx={{
               position: "relative",
               top: "170px",
@@ -70,7 +74,7 @@ const Product = () => {
             }}
           >
             DROOW
-          </Typography>
+          </Typography> */}
         </Paper>
       </Stack>
       <Container>
@@ -145,6 +149,11 @@ const Product = () => {
                   sx={{
                     marginTop: "1rem",
                     letterSpacing: "2px",
+                    opacity: isVisible ? "1" : "0",
+                    transform: isVisible
+                      ? "translate3d(0, 0, 0) "
+                      : "translate3d(0, 50px, 0)" /* ADDED - start x position as -50px */,
+                    transition: "0.3s all ease-in-out ",
                   }}
                 >
                   Time Tag Watch.
@@ -156,6 +165,12 @@ const Product = () => {
                 sx={{
                   marginTop: "1rem",
                   letterSpacing: "2px",
+                  opacity: isVisible ? "1" : "0",
+                  transform: isVisible
+                    ? "translate3d(0, 0, 0) "
+                    : "translate3d(0, 50px, 0)" /* ADDED - start x position as -50px */,
+                  transition: "0.3s all ease-in-out ",
+                  transitionDelay: "0.3s",
                 }}
               >
                 Sometimes, we need to check the time, wondering when our work or
@@ -168,6 +183,12 @@ const Product = () => {
                   marginTop: "1rem",
                   letterSpacing: "2px",
                   marginBottom: "2rem",
+                  opacity: isVisible ? "1" : "0",
+                  transform: isVisible
+                    ? "translate3d(0, 0, 0) "
+                    : "translate3d(0, 50px, 0)" /* ADDED - start x position as -50px */,
+                  transition: "0.3s all ease-in-out ",
+                  transitionDelay: "0.6s",
                 }}
               >
                 To avoid your boss s staring eye, you should not roll your eyes
@@ -177,7 +198,18 @@ const Product = () => {
                 harder to be damaged. It provides you with experience to feel
                 the time at the end of your finger without damaging your watch.
               </Typography>
-              <MyButton content="Learn more" />
+              <Box
+                sx={{
+                  opacity: isVisible ? "1" : "0",
+                  transform: isVisible
+                    ? "translate3d(0, 0, 0) "
+                    : "translate3d(0, 50px, 0)" /* ADDED - start x position as -50px */,
+                  transition: "0.3s all ease-in-out ",
+                  transitionDelay: "0.9s",
+                }}
+              >
+                <MyButton content="Learn more" />
+              </Box>
             </Stack>
           </Grid>
         </Grid>

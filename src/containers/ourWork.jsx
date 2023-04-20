@@ -49,17 +49,18 @@ const OurWork = () => {
           // variant="woven"
           variant="masonry"
           cols={2}
+
           gap={8}
           sx={{
             "& li:nth-of-type(1)": {
               marginTop: "6rem",
             },
-            "& li:nth-of-type(2)": {
-              opacity: isVisible ? "1" : "0",
-              transform: isVisible
-                ? "translate3d(0, 0, 0) "
-                : "translate3d(-60px, 0, 0)",
-            },
+            // "& li:nth-of-type(2)": {
+            //   opacity: isVisible ? "1" : "0",
+            //   transform: isVisible
+            //     ? "translate3d(0, 0, 0) "
+            //     : "translate3d(-60px, 0, 0)",
+            // },
             transition: "0.25s all ease-in-out ",
 
           }}
@@ -80,11 +81,20 @@ const OurWork = () => {
                 title={item.category}
                 subtitle={item.title}
                 sx={{
+                  [`& .MuiImageListItemBar-title `]:{
+                    fontSize:"14px",
+                  },
+                  [`& .MuiImageListItemBar-subtitle `]:{
+                    fontSize:"32px",
+                    margin:"10px",
+                    letterSpacing:"3px"
+                  },
                   // height: "100%",
                   textAlign: "center",
                   backgroundColor: "none",
-                  // transition: "all 2s",
+                  transition: "all 2s ease-in-out",
                   "&:hover": {
+                    transition: "all 2s ease-in-out",
                     // backgroundColor: "rgb (0,0,0,0.5)",
                     // height: "100%",
                     height: "40%",
@@ -92,6 +102,7 @@ const OurWork = () => {
                       {
                         // color:"red",
                         transform: "scale(1.5, 1.5)",
+                        transition: " transform 1s ease-in-out",
                       },
                   },
                 }}

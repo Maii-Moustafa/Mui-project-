@@ -27,59 +27,67 @@ export default function LatestNewsCard({
         image={photo}
         alt={title}
       />
-      <Card
-        sx={{
-          width: "85%",
-          backgroundColor: "black",
-          position: "relative",
-          right: "-70px",
-          top:"-50px"
-        }}
-      >
-        <CardContent>
-          <Box
+      <Stack direction="row" justifyContent="flex-end">
+        <Card
+          sx={{
+            width: { sm: "100%", md: "100%", lg: "85%" },
+            backgroundColor: "black",
+            position: "relative",
+            top: "-50px",
+            padding:"40px 10px"
+          }}
+        >
+          <CardContent
             sx={{
-              // width: "80%",
-              // backgroundColor: "black",
+              borderRadius: "0px",
             }}
           >
-            <Typography
-              color="secondary"
-              variant="p"
-              sx={{
-                letterSpacing: "2px",
-                textTransform: "uppercase",
-                fontSize: "14px",
+            <Box
+              sx={
+                {
+                  // width: "80%",
+                  // backgroundColor: "black",
+                }
+              }
+            >
+              <Typography
+                color="secondary"
+                variant="p"
+                sx={{
+                  letterSpacing: "2px",
+                  textTransform: "uppercase",
+                  fontSize: "14px",
 
-                lineHeight: "1.2",
-              }}
-            >
-              {category}
-            </Typography>
-            <Typography
-              variant="h5"
-              color={theme.palette.mode === "dark" ? "white" : "black"}
-              sx={{
-                marginTop: "1rem",
-                letterSpacing: "2px",
-              }}
-            >
-              {title}
-            </Typography>
+                  lineHeight: "1.2",
+                }}
+              >
+                {category}
+              </Typography>
+              <Typography
+                variant="h5"
+                color={theme.palette.mode === "dark" ? "white" : "black"}
+                sx={{
+                  marginTop: "1rem",
+                  letterSpacing: "2px",
+                }}
+              >
+                {title}
+              </Typography>
 
-            <Typography
-              variant="p"
-              color="secondary"
-              sx={{
-                paddingTop: "2rem",
-                fontSize: "0.9rem",
-              }}
-            >
-              {description}
-            </Typography>
-          </Box>
-        </CardContent>
-      </Card>
+              <Typography
+                variant="p"
+                color="secondary"
+                sx={{
+                  paddingTop: "2rem",
+                  fontSize: "0.9rem",
+                }}
+              >
+                {description}
+              </Typography>
+            </Box>
+          </CardContent>
+        </Card>
+      </Stack>
     </Box>
   );
 }

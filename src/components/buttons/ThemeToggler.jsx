@@ -21,7 +21,7 @@ export default function ThemeToggler() {
         backgroundColor: (theme) =>
           theme.palette.mode === "dark" ? "white" : "black",
         color: (theme) => (theme.palette.mode === "dark" ? "black" : "white"),
-
+        marginRight:"5px",
         "&:hover": (theme) =>
           theme.palette.mode === "light"
             ? { backgroundColor: "white", color: "black" }

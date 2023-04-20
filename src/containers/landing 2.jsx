@@ -14,7 +14,7 @@ export default function LandingCarousel() {
     <>
       <Stack
         justifyContent="flex-end"
-        sx={{ position: "relative", height: "100vh" }}
+        sx={{ position: "relative", height: "100vh",marginBottom: "8rem" }}
       >
         <HomeCarousel activeStep={activeStep} setActiveStep={setActiveStep} exit={exit} setExit={setExit} />
 
@@ -26,8 +26,8 @@ export default function LandingCarousel() {
           sx={{
             zIndex: 300,
             position: "absolute",
-            top: "500px",
-            left: "80px",
+            top:{sm:"450px" , lg:"500px"} ,
+            left:{sm:"60px" , lg:"80px"}  ,
           }}
         >
           <OpenSocials />

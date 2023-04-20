@@ -36,7 +36,7 @@ const OurServices = () => {
       <MainTitle mainTitle="New Branding Agency" />
       <Grid container sx={{
         marginTop: "2rem",
-        "& div:nth-of-type(even)": { backgroundColor: "grey"  },
+        // "& div:nth-of-type(even)": { backgroundColor: "grey"  },
       }}>
         {services.map((card) => {
           return (

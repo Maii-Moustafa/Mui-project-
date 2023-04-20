@@ -17,6 +17,7 @@ import ThemeToggler from "../components/buttons/ThemeToggler";
 import ScrollToggler from "../components/buttons/ScrollToggle";
 import Loading from "../containers/loading";
 import Hiring from "../containers/hiring";
+import LinearWithValueLabel from "../containers/loading";
 
 function Home() {
   const myRef = useRef();
@@ -33,7 +34,7 @@ function Home() {
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-    
+
         setIsVisible(entry.isIntersecting);
         // console.log("entry", entry);
         if (entry.isIntersecting) observer.unobserve(entry.target);
@@ -47,7 +48,6 @@ function Home() {
     //myRef.current  -> element i am crefrencing
 
     observer.observe(myRef.current);
-
   }, []);
 
   return (
@@ -64,23 +64,22 @@ function Home() {
         <ThemeToggler />
         <ScrollToggler />
       </Stack>
+      <LinearWithValueLabel />
 
       <LandingCarousel />
       <Product />
-      <Container
-        maxWidth="xl"
-        // sx={{ flex: 1, my: 2  }}
-        component="main"
-        disableGutters
-      >
+      <Container maxWidth="xl" disableGutters>
         <HelloSection myRef={myRef} isVisible={isVisible} />
-      <HowSection howSectionRef={howSectionRef} isVisible={isVisible}/>
-
+      </Container>
+      <HowSection howSectionRef={howSectionRef} isVisible={isVisible} />
+      <Container maxWidth="xl" disableGutters>
         <OurServices />
         <OurWork />
 
         <FeedBack />
-        <LatestNews />
+      </Container>
+      <LatestNews />
+      <Container maxWidth="xl" disableGutters>
         <OurClients />
       </Container>
       <Hiring />

@@ -31,7 +31,7 @@ const ServicesCard = ({ id, icon, title, description }) => {
             top: "-1px",
             left: "15%",
             backgroundColor:
-              theme.palette.mode === "dark" ? "black" : "#F9F9F9",
+              theme.palette.mode === "dark" ? "black" : "#e6e6e6",
           },
           "&::after": {
             content: '""',
@@ -41,7 +41,7 @@ const ServicesCard = ({ id, icon, title, description }) => {
             top: "25%",
             left: "-1px",
             backgroundColor:
-              theme.palette.mode === "dark" ? "black" : "#F9F9F9",
+              theme.palette.mode === "dark" ? "black" : "#e6e6e6",
           },
         }}
       >

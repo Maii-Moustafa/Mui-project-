@@ -9,6 +9,8 @@ import { Parallax } from "react-scroll-parallax";
 import SwipeableViews from "react-swipeable-views-react-18-fix";
 
 import FeedbackCard from "../components/cards/FeedbackCard";
+import PaginationCarousel from "../components/PaginationCarousel";
+import { useState } from "react";
 
 const styles = {
   // root: {
@@ -65,6 +67,11 @@ const feedbacks = [
 
 const FeedBack = () => {
   const theme = useTheme();
+  const [index, setIndex] = useState(0);
+
+  const handleChangeIndex = (index) => {
+    setIndex(index);
+  };
   return (
     <>
       <Box
@@ -85,7 +92,7 @@ const FeedBack = () => {
         >
           <Typography
             variant="h2"
-            color={theme.palette.mode === "dark" ? "grey" : "black"}
+            color={theme.palette.mode === "dark" ? "grey" : "grey"}
             sx={{
               position: "absolute",
               marginTop: "1rem",
@@ -113,6 +120,8 @@ const FeedBack = () => {
               enableMouseEvents
               // style={styles.root}
               // slideStyle={styles.slideContainer}
+              index={index}
+              onChangeIndex={handleChangeIndex}
             >
               {feedbacks.map((card, i) => (
                 <div
@@ -123,6 +132,10 @@ const FeedBack = () => {
                 </div>
               ))}
             </SwipeableViews>
+            <PaginationCarousel
+              index={index}
+              onChangeIndex={handleChangeIndex}
+            />
           </Box>
           {/* <Carousel
             sx={{

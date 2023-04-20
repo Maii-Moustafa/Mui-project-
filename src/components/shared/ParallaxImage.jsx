@@ -5,14 +5,7 @@ import Typography from "@mui/material/Typography";
 import MyButton from "./MyButton";
 import Image from "./Image";
 
-export default function ParallaxImage({ image, children }) {
-  //   const parallax = useParallax({
-  //     speed: -10,
-  //     translateY: [-100, 100, "easeInOut"],
-  //     scale: [0, 1, "easeOutBack"],
-  //   });
-
-  //   console.log(children);
+export default function ParallaxImage({ howSectionRef, isVisible }) {
   return (
     // <Image src="../src/assets/images/watchProduct.jpg" ref={parallax.ref} />
     <ParallaxBanner
@@ -27,32 +20,37 @@ export default function ParallaxImage({ image, children }) {
               sx={{
                 display: { xs: "none", sm: "none", md: "none", lg: "block" },
                 position: "absolute",
-                //   top: "414px",
                 top: "100px",
                 bottom: "0",
                 left: "auto",
                 right: "60px",
-                // width: {sm:"0", md: "0", lg: "35%" } ,
-                width: "35%" ,
-
+                width: "35%",
+                height: "100%",
                 backgroundColor: "rgb(0,0,0,0.5)",
                 marginRight: "50px",
                 padding: "80px",
               }}
             >
               <Stack
+                ref={howSectionRef}
                 direction="column"
                 justifyContent="center"
                 alignItems="flex-start"
                 sx={{
+                  height: "100%",
                   color: "white",
                   marginTop: "1rem",
+                  opacity: isVisible ? "1" : "0",
+                  transform: isVisible
+                    ? "translate3d(0, 0, 0) "
+                    : "translate3d(0, 60px, 0)",
+                  transition: "0.25s all ease-in-out ",
                 }}
               >
                 <Typography
                   variant="h2"
                   sx={{
-                    marginTop: "1rem",
+                    marginTop: "1.5rem",
                     letterSpacing: "2px",
                   }}
                 >

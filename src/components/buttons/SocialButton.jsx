@@ -1,11 +1,10 @@
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 
-
-
-export default function SocialButton({icon}) {
+export default function SocialButton({ icon }) {
   return (
     <IconButton
+      // size="small"
       //   color="primary"
       aria-label="scroll toggle"
       sx={{
@@ -15,7 +14,7 @@ export default function SocialButton({icon}) {
         "&:hover": { backgroundColor: "black", color: "white" },
       }}
     >
-     {icon}
+      {icon}
     </IconButton>
   );
 }

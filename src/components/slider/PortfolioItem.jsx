@@ -151,8 +151,8 @@ export default function PortfolioItem({ item, i, exit }) {
                 }}
               />
             }
-            style={{
-              width: "25%",
+            sx={{
+              width: { xs: "100%", sm: "100%", md: "50%", lg: "25%" },
               borderRadius: "50px",
               padding: "10px 25px",
               border: "1px solid white",

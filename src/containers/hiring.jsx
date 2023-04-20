@@ -1,14 +1,17 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useTheme } from "@emotion/react";
+
 import useHover from "../hooks/useHover";
 
 const Hiring = () => {
   const { isHovering, handleMouseOver, handleMouseOut } = useHover();
-
+  const theme = useTheme();
   return (
     <Box
-      sx={{ width: "100%", marginTop: "8rem", position: "relative" ,  transition: " all 0.8s ease-in-out",}}
+      sx={{ width: "100%", marginTop: "8rem", position: "relative" ,  transition: " all 0.8s ease-in-out",backgroundColor:
+      theme.palette.mode === "dark" ? "#090909" : "white"}}
       component="section"
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
@@ -16,8 +19,9 @@ const Hiring = () => {
       <Stack
         direction="row"
         justifyContent="space-around"
+        alignItems="center"
         sx={{
-          padding: "80px 0",
+          padding: "120px 0",
           "&:hover": {
             // backgroundColor: isHovering ? "grey" : "black",
           },
@@ -41,7 +45,7 @@ const Hiring = () => {
           dare and contact us immediatily
         </Typography>
       </Stack>
-      {isHovering ? (
+      {/* {isHovering ? (
         <Box
           sx={{
             position: "absolute",
@@ -66,7 +70,7 @@ const Hiring = () => {
         ></Box>
       ) : (
         ""
-      )}
+      )} */}
     </Box>
   );
 };

@@ -8,10 +8,8 @@ import SubTitle from "../components/shared/titles/SubTitle.jsx";
 import LatestNewsCard from "../components/cards/LatestNewsCard.jsx";
 
 import SwipeableViews from "react-swipeable-views-react-18-fix";
-import Slider from "react-slick";
+import PaginationCarousel from "../components/PaginationCarousel.jsx";
 
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 const styles = {
   root: {
     padding: "0 30px",
@@ -26,7 +24,7 @@ const styles = {
     color: "#fff",
   },
   slide1: {
-    background: "black",
+    // background: "black",
   },
 };
 const lastNews = [
@@ -79,26 +77,9 @@ const lastNews = [
       "Simple point-and-shoot digital cameras can give surprising quality when they have the right lenses and sensors.",
   },
 ];
+
 const LatestNews = () => {
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-  };
   return (
-    // <Box sx={{ width: "100%", marginTop: "8rem" }} component="section">
-    //   <SubTitle subTitle="LATEST NEWS" />
-    //   <MainTitle mainTitle="Latest & Greatest Post" />
-
-    //   <Slider {...settings}>
-    //     {lastNews.map((card) => {
-    //       return <LatestNewsCard  key={card.id} {...card} />;
-    //     })}
-    //   </Slider>
-
-    // </Box>
     <Box
       component="section"
       sx={{
@@ -124,9 +105,32 @@ const LatestNews = () => {
             <LatestNewsCard key={card.id} {...card} />
           </div>
         ))}
+       
       </SwipeableViews>
+      <PaginationCarousel/>
     </Box>
   );
 };
 
 export default LatestNews;
+
+// -------------------------- react slick demo
+// var settings = {
+//   dots: true,
+//   infinite: true,
+//   speed: 500,
+//   slidesToShow: 3,
+//   slidesToScroll: 1,
+// };
+
+// <Box sx={{ width: "100%", marginTop: "8rem" }} component="section">
+//   <SubTitle subTitle="LATEST NEWS" />
+//   <MainTitle mainTitle="Latest & Greatest Post" />
+
+//   <Slider {...settings}>
+//     {lastNews.map((card) => {
+//       return <LatestNewsCard  key={card.id} {...card} />;
+//     })}
+//   </Slider>
+
+// </Box>

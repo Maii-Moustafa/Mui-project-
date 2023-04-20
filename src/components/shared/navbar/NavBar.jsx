@@ -108,10 +108,12 @@ export default function Navbar() {
   return (
     <>
       <Box
-        sx={{
-          flexGrow: 1,
-          // position:{ `sticky ${ scrollDirection === "down" ? "-top-24" : "top-0"}
-        }}
+        sx={
+          {
+            // flexGrow: 1,
+            // position:{ `sticky ${ scrollDirection === "down" ? "-top-24" : "top-0"}
+          }
+        }
         // className={`header ${scrollDirection === "down" ? "hide" : "show"}`}
       >
         <AppBar
@@ -119,13 +121,13 @@ export default function Navbar() {
           sx={{ backgroundColor: "black" }}
         >
           <Toolbar>
-            {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Droow
-            </Typography> */}
-            <Image
+            </Typography>
+            {/* <Image
               src="../../../src/assets/logo.png"
               style={{ width: "30%", flexGrow: 1 }}
-            />
+            /> */}
             <Box onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
               <BurgerIconButton toggleDrawer={toggleDrawer} toggled={toggled} />
               {state[top] ? (
@@ -133,6 +135,7 @@ export default function Navbar() {
                   className="close"
                   variant="span"
                   sx={{
+                    marginLeft: "5px",
                     color: "grey",
                     fontWeight: "300",
                   }}
@@ -144,6 +147,7 @@ export default function Navbar() {
                   className="close"
                   variant="span"
                   sx={{
+                    marginLeft: "5px",
                     color: "grey",
                     fontWeight: "300",
                   }}
