@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import { ParallaxProvider } from "react-scroll-parallax";
 
-import Layout from "./components/shared/layout";
+import Layout from "./components/shared/Layout";
 import Home from "./pages/home";
 
 import LinearWithValueLabel from "./containers/loading";

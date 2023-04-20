@@ -1,12 +1,10 @@
 import Stack from "@mui/material/Stack";
-
+import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 
-import { useTheme } from "@mui/material/styles";
-import { Box } from "@mui/material";
 const FeedbackCard = ({ id, avatar, avatarInfo, content }) => {
   return (
     <>
@@ -18,7 +16,6 @@ const FeedbackCard = ({ id, avatar, avatarInfo, content }) => {
           alignItems: "center",
           borderRadius: "0px",
           backgroundColor: "#090909",
-          
         }}
       >
         <CardContent
@@ -32,7 +29,6 @@ const FeedbackCard = ({ id, avatar, avatarInfo, content }) => {
         >
           <Box
             sx={{
-            
               width: { sm: "100%", md: "90%", lg: "90%" },
             }}
           >
